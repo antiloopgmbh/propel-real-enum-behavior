@@ -1,16 +1,16 @@
 {
-  "name": "effenti/propel-real-enum-behavior",
+  "name": "kodalto/propel-real-enum-behavior",
   "version": "1.1.0",
   "description": "Propel 2 behavior to manage the ENUM type more closely to what enums should be",
   "authors": [
     {
       "name": "Maxime Bélanger",
-      "email": "mbelanger@effenti.ca"
+      "email": "mbelanger@kodalto.com"
     }
   ],
   "license": "MIT",
   "support":{
-    "email": "support@effenti.ca"
+    "email": "support@kodalto.com"
   },
   "require": {
     "propel/propel": "~2.0@dev"
@@ -18,11 +18,11 @@
   "type" : "propel-behavior",
   "extra": {
     "name": "real-enum",
-    "class": "\\Effenti\\Propel\\Behavior\\RealEnumBehavior"
+    "class": "\\Kodalto\\Propel\\Behavior\\RealEnumBehavior"
   },
   "autoload":{
     "psr-4": {
-      "Effenti\\Propel\\Behavior\\":[
+      "Kodalto\\Propel\\Behavior\\":[
         "src"
       ]
     }

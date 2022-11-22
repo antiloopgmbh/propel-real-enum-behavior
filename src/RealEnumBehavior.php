@@ -1,6 +1,6 @@
 <?php
 
-namespace Effenti\Propel\Behavior;
+namespace Kodalto\Propel\Behavior;
 
 use Propel\Generator\Builder\Om\TableMapBuilder;
 use Propel\Generator\Model\Behavior;
