@@ -1,3 +1,7 @@
+## 2.0.0 (2023-05-12)
+* Minimum PHP version is now 7.4
+* Added hints for latest Propel 2 release
+
 ## 1.1.0 (2018-08-21)
 
 * PHP 7.2 compatibility

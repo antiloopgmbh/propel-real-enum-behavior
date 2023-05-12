@@ -7,17 +7,17 @@ use Propel\Generator\Model\Behavior;
 use Propel\Generator\Util\PhpParser;
 
 class RealEnumBehavior extends Behavior {
-    private $hasRealEnum = false;
+    private bool $hasRealEnum = false;
 
-    public function modifyTable(){
-        foreach($this->getTable()->getColumns() as $column){
-            if($column->getType() == 'ENUM'){
+    public function modifyTable(): void {
+        foreach ($this->getTable()->getColumns() as $column) {
+            if ($column->getType() == 'ENUM') {
                 $sqlType = 'enum(';
-                foreach($column->getValueSet() as $value){
+                foreach ($column->getValueSet() as $value) {
                     $sqlType .= "'$value',";
                 }
 
-                $column->getDomain()->setSqlType(substr($sqlType, 0, -1).')');
+                $column->getDomain()->setSqlType(substr($sqlType, 0, -1) . ')');
                 $column->getDomain()->setType("VARCHAR");
                 $column->getDomain()->setDescription("RealEnum");
 
@@ -26,14 +26,14 @@ class RealEnumBehavior extends Behavior {
         }
     }
 
-    public function objectAttributes(){
+    public function objectAttributes(): string {
         $attributes = "";
 
-        foreach($this->getTable()->getColumns() as $column){
-            if($column->getDomain()->getDescription() == 'RealEnum'){
-                foreach($column->getValueSet() as $value){
+        foreach ($this->getTable()->getColumns() as $column) {
+            if ($column->getDomain()->getDescription() == 'RealEnum') {
+                foreach ($column->getValueSet() as $value) {
                     $attributes .= '
-const '. $column->getUppercasedName() . '_' . preg_replace('/\s+/', '_', strtoupper($value)) . " = '$value';";
+const ' . $column->getUppercasedName() . '_' . preg_replace('/\s+/', '_', strtoupper($value)) . " = '$value';";
                 }
             }
         }
@@ -41,10 +41,10 @@ const '. $column->getUppercasedName() . '_' . preg_replace('/\s+/', '_', strtoup
         return $attributes;
     }
 
-    public function staticAttributes($builder){
+    public function staticAttributes($builder): string {
         $attributes = '';
         $valueSets = '';
-        if($builder instanceof TableMapBuilder && $this->hasRealEnum){
+        if ($builder instanceof TableMapBuilder && $this->hasRealEnum) {
             $attributes = "/** The enumerated values for the method field */
 ";
             $valueSets = "
@@ -52,11 +52,11 @@ const '. $column->getUppercasedName() . '_' . preg_replace('/\s+/', '_', strtoup
 protected static \$enumValueSets = array(
 ";
 
-            foreach($this->getTable()->getColumns() as $column){
-                if($column->getDomain()->getDescription() == 'RealEnum'){
+            foreach ($this->getTable()->getColumns() as $column) {
+                if ($column->getDomain()->getDescription() == 'RealEnum') {
                     $valueSets .= "    {$this->getTable()->getPhpName()}TableMap::{$column->getConstantName()} => array(
 ";
-                    foreach($column->getValueSet() as $value){
+                    foreach ($column->getValueSet() as $value) {
                         $valueConstant = $column->getConstantName() . '_' . preg_replace('/\s+/', '_', strtoupper($value));
                         $attributes .= "const {$valueConstant} = '{$value}';
 ";
@@ -71,12 +71,12 @@ protected static \$enumValueSets = array(
             $valueSets .= ");
 ";
         }
-        return $attributes.$valueSets;
+        return $attributes . $valueSets;
     }
 
-    public function staticMethods($builder){
+    public function staticMethods($builder): string {
         $methods = '';
-        if($builder instanceof TableMapBuilder && $this->hasRealEnum) {
+        if ($builder instanceof TableMapBuilder && $this->hasRealEnum) {
             $methods = '/**
  * Gets the list of values for all ENUM and SET columns
  * @return array
@@ -101,7 +101,7 @@ public static function getValueSet($colname)
         return $methods;
     }
 
-    public function queryMethods(){
+    public function queryMethods(): string {
         $methods = '';
         if ($this->hasRealEnum) {
             $methods = "
@@ -124,12 +124,12 @@ protected function convertValueForColumn(\$value, \\Propel\\Runtime\\Map\\Column
         return $methods;
     }
 
-    public function objectFilter(&$script){
+    public function objectFilter(&$script) {
         $parser = new PHPParser($script, true);
 
 
-        foreach($this->getTable()->getColumns() as $column){
-            if($column->getDomain()->getDescription() == 'RealEnum'){
+        foreach ($this->getTable()->getColumns() as $column) {
+            if ($column->getDomain()->getDescription() == 'RealEnum') {
                 $parser->replaceMethod("set{$column->getPhpName()}", "
     /**
      * Set the value of [{$column->getLowercasedName()}] column.
@@ -180,12 +180,12 @@ protected function convertValueForColumn(\$value, \\Propel\\Runtime\\Map\\Column
         $script = $parser->getCode();
     }
 
-    public function queryFilter(&$script){
+    public function queryFilter(&$script) {
         $parser = new PHPParser($script, true);
 
         $table = $this->getTable();
-        foreach($table->getColumns() as $column){
-            if($column->getDomain()->getDescription() == 'RealEnum'){
+        foreach ($table->getColumns() as $column) {
+            if ($column->getDomain()->getDescription() == 'RealEnum') {
                 $parser->replaceMethod("filterBy{$column->getPhpName()}", "
 
     /**
