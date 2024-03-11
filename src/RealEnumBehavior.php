@@ -1,6 +1,6 @@
 <?php
 
-namespace Kodalto\Propel\Behavior;
+namespace StefanPolzer\Propel\Behavior;
 
 use Propel\Generator\Builder\Om\TableMapBuilder;
 use Propel\Generator\Model\Behavior;

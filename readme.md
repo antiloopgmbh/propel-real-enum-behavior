@@ -1,8 +1,8 @@
 # Propel Real Enum Behavior
 
-[![Latest Stable Version](https://poser.pugx.org/Kodalto/propel-real-enum-behavior/v/stable)](https://packagist.org/packages/Kodalto/propel-real-enum-behavior)
-[![Total Downloads](https://poser.pugx.org/Kodalto/propel-real-enum-behavior/downloads)](https://packagist.org/packages/Kodalto/propel-real-enum-behavior)
-[![License](https://poser.pugx.org/Kodalto/propel-real-enum-behavior/license)](https://packagist.org/packages/Kodalto/propel-real-enum-behavior)
+[![Latest Stable Version](https://poser.pugx.org/stefanpolzer/propel-real-enum-behavior/v/stable)](https://packagist.org/packages/stefanpolzer/propel-real-enum-behavior)
+[![Total Downloads](https://poser.pugx.org/stefanpolzer/propel-real-enum-behavior/downloads)](https://packagist.org/packages/stefanpolzer/propel-real-enum-behavior)
+[![License](https://poser.pugx.org/stefanpolzer/propel-real-enum-behavior/license)](https://packagist.org/packages/stefanpolzer/propel-real-enum-behavior)
 
 ## Requirements
 
@@ -12,7 +12,7 @@ It was also only tested for **MySQL** databases, if you wish to test it or adjus
 ## Installation
 
 ```bash
-composer require Kodalto/propel-real-enum-behavior
+composer require stefanpolzer/propel-real-enum-behavior
 ```
 
 #### schema.xml

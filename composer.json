@@ -1,16 +1,15 @@
 {
-  "name": "kodalto/propel-real-enum-behavior",
-  "version": "2.0.0",
+  "name": "stefanpolzer/propel-real-enum-behavior",
   "description": "Propel 2 behavior to manage the ENUM type more closely to what enums should be",
   "authors": [
     {
-      "name": "Maxime Bélanger",
-      "email": "mbelanger@kodalto.com"
+      "name": "Stefan Polzer",
+      "email": "stefan@ps-webdesign.com"
     }
   ],
   "license": "MIT",
   "support":{
-    "email": "support@kodalto.com"
+    "email": "stefan@ps-webdesign.com"
   },
   "require": {
     "php": ">=7.4",
@@ -19,11 +18,11 @@
   "type" : "propel-behavior",
   "extra": {
     "name": "real-enum",
-    "class": "\\Kodalto\\Propel\\Behavior\\RealEnumBehavior"
+    "class": "\\StefanPolzer\\Propel\\Behavior\\RealEnumBehavior"
   },
   "autoload":{
     "psr-4": {
-      "Kodalto\\Propel\\Behavior\\":[
+      "StefanPolzer\\Propel\\Behavior\\":[
         "src"
       ]
     }
