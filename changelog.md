@@ -1,3 +1,6 @@
+## 2.0.1 (2024-03-11)
+* Fix Regex to support Enums with Hyphen
+
 ## 2.0.0 (2023-05-12)
 * Minimum PHP version is now 7.4
 * Added hints for latest Propel 2 release

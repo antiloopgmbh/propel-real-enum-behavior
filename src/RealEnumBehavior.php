@@ -33,7 +33,7 @@ class RealEnumBehavior extends Behavior {
             if ($column->getDomain()->getDescription() == 'RealEnum') {
                 foreach ($column->getValueSet() as $value) {
                     $attributes .= '
-const ' . $column->getUppercasedName() . '_' . preg_replace('/\s+/', '_', strtoupper($value)) . " = '$value';";
+const ' . $column->getUppercasedName() . '_' . preg_replace('/[\s-]+/', '_', strtoupper($value)) . " = '$value';";
                 }
             }
         }
@@ -57,7 +57,7 @@ protected static \$enumValueSets = array(
                     $valueSets .= "    {$this->getTable()->getPhpName()}TableMap::{$column->getConstantName()} => array(
 ";
                     foreach ($column->getValueSet() as $value) {
-                        $valueConstant = $column->getConstantName() . '_' . preg_replace('/\s+/', '_', strtoupper($value));
+                        $valueConstant = $column->getConstantName() . '_' . preg_replace('/[\s-]+/', '_', strtoupper($value));
                         $attributes .= "const {$valueConstant} = '{$value}';
 ";
                         $valueSets .= "        self::{$valueConstant},
