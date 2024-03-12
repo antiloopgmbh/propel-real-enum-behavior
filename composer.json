@@ -1,16 +1,7 @@
 {
-  "name": "stefanpolzer/propel-real-enum-behavior",
+  "name": "antiloopgmbh/propel-real-enum-behavior",
   "description": "Propel 2 behavior to manage the ENUM type more closely to what enums should be",
-  "authors": [
-    {
-      "name": "Stefan Polzer",
-      "email": "stefan@ps-webdesign.com"
-    }
-  ],
   "license": "MIT",
-  "support":{
-    "email": "stefan@ps-webdesign.com"
-  },
   "require": {
     "php": ">=7.4",
     "propel/propel": "~2.0@beta"
@@ -18,11 +9,11 @@
   "type" : "propel-behavior",
   "extra": {
     "name": "real-enum",
-    "class": "\\StefanPolzer\\Propel\\Behavior\\RealEnumBehavior"
+    "class": "\\Antiloop\\Propel\\Behavior\\RealEnumBehavior"
   },
   "autoload":{
     "psr-4": {
-      "StefanPolzer\\Propel\\Behavior\\":[
+      "Antiloop\\Propel\\Behavior\\":[
         "src"
       ]
     }

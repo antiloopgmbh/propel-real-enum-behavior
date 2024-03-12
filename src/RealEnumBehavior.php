@@ -1,6 +1,6 @@
 <?php
 
-namespace StefanPolzer\Propel\Behavior;
+namespace Antiloop\Propel\Behavior;
 
 use Propel\Generator\Builder\Om\TableMapBuilder;
 use Propel\Generator\Model\Behavior;
