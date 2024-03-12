@@ -4,18 +4,19 @@
   "license": "MIT",
   "require": {
     "php": ">=7.4",
-    "propel/propel": "~2.0@beta"
+    "propel/propel": "^2.0.0"
   },
-  "type" : "propel-behavior",
+  "type": "propel-behavior",
   "extra": {
     "name": "real-enum",
     "class": "\\Antiloop\\Propel\\Behavior\\RealEnumBehavior"
   },
-  "autoload":{
+  "autoload": {
     "psr-4": {
-      "Antiloop\\Propel\\Behavior\\":[
+      "Antiloop\\Propel\\Behavior\\": [
         "src"
       ]
     }
-  }
+  },
+  "minimum-stability": "beta"
 }
