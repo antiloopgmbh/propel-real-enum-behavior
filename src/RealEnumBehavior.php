@@ -9,7 +9,11 @@ use Propel\Generator\Util\PhpParser;
 class RealEnumBehavior extends Behavior {
     private bool $hasRealEnum = false;
 
-    public function modifyTable(): void {
+    /**
+     * @return void
+     */
+    public function modifyTable(): void
+    {
         foreach ($this->getTable()->getColumns() as $column) {
             if ($column->getType() == 'ENUM') {
                 $sqlType = 'enum(';
@@ -18,30 +22,21 @@ class RealEnumBehavior extends Behavior {
                 }
 
                 $column->getDomain()->setSqlType(substr($sqlType, 0, -1) . ')');
-                $column->getDomain()->setType("VARCHAR");
-                $column->getDomain()->setDescription("RealEnum");
+                $column->getDomain()->setType('VARCHAR');
+                $column->getDomain()->setDescription('RealEnum');
 
                 $this->hasRealEnum = true;
             }
         }
     }
 
-    public function objectAttributes(): string {
-        $attributes = "";
-
-        foreach ($this->getTable()->getColumns() as $column) {
-            if ($column->getDomain()->getDescription() == 'RealEnum') {
-                foreach ($column->getValueSet() as $value) {
-                    $attributes .= '
-const ' . $column->getUppercasedName() . '_' . preg_replace('/[\s-]+/', '_', strtoupper($value)) . " = '$value';";
-                }
-            }
-        }
-
-        return $attributes;
-    }
-
-    public function staticAttributes($builder): string {
+    /**
+     * @param mixed $builder
+     *
+     * @return string
+     */
+    public function staticAttributes($builder): string
+    {
         $attributes = '';
         $valueSets = '';
         if ($builder instanceof TableMapBuilder && $this->hasRealEnum) {
@@ -57,7 +52,7 @@ protected static \$enumValueSets = array(
                     $valueSets .= "    {$this->getTable()->getPhpName()}TableMap::{$column->getConstantName()} => array(
 ";
                     foreach ($column->getValueSet() as $value) {
-                        $valueConstant = $column->getConstantName() . '_' . preg_replace('/[\s-]+/', '_', strtoupper($value));
+                        $valueConstant = $column->getConstantName() . '_' . strtoupper(preg_replace('/[^a-zA-Z0-9_]/', '_', $value));
                         $attributes .= "const {$valueConstant} = '{$value}';
 ";
                         $valueSets .= "        self::{$valueConstant},
@@ -71,10 +66,17 @@ protected static \$enumValueSets = array(
             $valueSets .= ");
 ";
         }
+
         return $attributes . $valueSets;
     }
 
-    public function staticMethods($builder): string {
+    /**
+     * @param mixed $builder
+     *
+     * @return string
+     */
+    public function staticMethods($builder): string
+    {
         $methods = '';
         if ($builder instanceof TableMapBuilder && $this->hasRealEnum) {
             $methods = '/**
@@ -101,7 +103,11 @@ public static function getValueSet($colname)
         return $methods;
     }
 
-    public function queryMethods(): string {
+    /**
+     * @return string
+     */
+    public function queryMethods(): string
+    {
         $methods = '';
         if ($this->hasRealEnum) {
             $methods = "
@@ -121,10 +127,17 @@ protected function convertValueForColumn(\$value, \\Propel\\Runtime\\Map\\Column
     }
 }";
         }
+
         return $methods;
     }
 
-    public function objectFilter(&$script) {
+    /**
+     * @param string &$script
+     *
+     * @return void
+     */
+    public function objectFilter(string &$script): void
+    {
         $parser = new PHPParser($script, true);
 
 
@@ -180,7 +193,13 @@ protected function convertValueForColumn(\$value, \\Propel\\Runtime\\Map\\Column
         $script = $parser->getCode();
     }
 
-    public function queryFilter(&$script) {
+    /**
+     * @param string $script
+     *
+     * @return void
+     */
+    public function queryFilter(string &$script): void
+    {
         $parser = new PHPParser($script, true);
 
         $table = $this->getTable();
