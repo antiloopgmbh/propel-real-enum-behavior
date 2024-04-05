@@ -1,3 +1,8 @@
+## 2.1.0 (2024-03-12)
+* Add minimum-stability property
+* Remove no longer required methods and add PHP type hints
+* Update Readme file
+
 ## 2.0.1 (2024-03-11)
 * Fix Regex to support Enums with Hyphen
 
