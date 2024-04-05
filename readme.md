@@ -1,8 +1,8 @@
 # Propel Real Enum Behavior
 
-[![Latest Stable Version](https://poser.pugx.org/antiloopgmbh/propel-real-enum-behavior/v/stable)](https://packagist.org/packages/antiloopgmbh/propel-real-enum-behavior)
-[![Total Downloads](https://poser.pugx.org/antiloopgmbh/propel-real-enum-behavior/downloads)](https://packagist.org/packages/antiloopgmbh/propel-real-enum-behavior)
-[![License](https://poser.pugx.org/antiloopgmbh/propel-real-enum-behavior/license)](https://packagist.org/packages/antiloopgmbh/propel-real-enum-behavior)
+[![Latest Stable Version](https://poser.pugx.org/antiloop/propel-real-enum-behavior/v/stable)](https://packagist.org/packages/antiloop/propel-real-enum-behavior)
+[![Total Downloads](https://poser.pugx.org/antiloop/propel-real-enum-behavior/downloads)](https://packagist.org/packages/antiloop/propel-real-enum-behavior)
+[![License](https://poser.pugx.org/antiloop/propel-real-enum-behavior/license)](https://packagist.org/packages/antiloop/propel-real-enum-behavior)
 
 ## Requirements
 
@@ -12,7 +12,7 @@ It was also only tested for **MariaDb** databases for Spryker Webshops.
 ## Installation
 
 ```bash
-composer require antiloopgmbh/propel-real-enum-behavior
+composer require antiloop/propel-real-enum-behavior
 ```
 
 #### schema.xml

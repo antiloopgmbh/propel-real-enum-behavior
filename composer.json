@@ -1,5 +1,5 @@
 {
-  "name": "antiloopgmbh/propel-real-enum-behavior",
+  "name": "antiloop/propel-real-enum-behavior",
   "description": "Propel 2 behavior to manage the ENUM type more closely to what enums should be",
   "license": "MIT",
   "require": {

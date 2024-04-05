@@ -1,3 +1,6 @@
+## 3.0.0 (2024-04-05)
+* Change composer namespace
+
 ## 2.1.0 (2024-03-12)
 * Add minimum-stability property
 * Remove no longer required methods and add PHP type hints
